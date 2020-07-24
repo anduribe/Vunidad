@@ -11,76 +11,79 @@ import javax.persistence.Table;
 // creamos una entidad para hacer uso de jpa y crearemos directamente la tabla Clientes
 
 @Entity
-@Table(name="Clientes")
+@Table(name="Iclientes")
 
-public class Usuario {
+public class Iclientes {
 	
 	// nos guiaremos por el id como PK
 	
 	@Id
-
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CLIENTES_TRG")
-	@SequenceGenerator(name="CLIENTES_TRG",initialValue = 1, allocationSize = 1, sequenceName = "CLIENTES_SEQ")
-	@Column(name = "id", updatable = false, nullable = false)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "author_generator")
+	@SequenceGenerator(name="author_generator",initialValue = 1, allocationSize = 1, sequenceName = "ICLIENTES_SEQ1")
 	
+	
+	@Column(name = "id", updatable = false, nullable = false)
 	private long id;
+	
 	@Column(name="Nombre", length = 300)
 	private String nombre;
-	@Column(name="Fecha", length = 300)
-	private String fecha;
+
 	@Column(name="RUT", length = 20)
 	private String rut;
-	@Column(name="Accidente", length = 200)
-	private String accidente;
 	
+	@Column(name="Telefono", length = 300)
+	private String telefono;
 	
+	@Column(name="Email", length = 200)
+	private String email;
+
 	public long getId() {
 		return id;
 	}
+
 	public void setId(long id) {
 		this.id = id;
 	}
+
 	public String getNombre() {
 		return nombre;
 	}
+
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public String getFecha() {
-		return fecha;
-	}
-	public void setFecha(String fecha) {
-		this.fecha = fecha;
-	}
+
 	public String getRut() {
 		return rut;
 	}
+
 	public void setRut(String rut) {
 		this.rut = rut;
 	}
-	public String getAccidente() {
-		return accidente;
+
+	public String getTelefono() {
+		return telefono;
 	}
-	public void setAccidente(String accidente) {
-		this.accidente = accidente;
+
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
 	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	
 	
 	@Override
 	public String toString() {
-		return "Usuario [id=" + id + ", nombre=" + nombre + ", fecha=" + fecha + ", rut=" + rut + ", accidente="
-				+ accidente + "]";
+		return "Iclientes [id=" + id + ", nombre=" + nombre + ", rut=" + rut + ", telefono=" + telefono + ", email="
+				+ email + "]";
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
 	
 
 }

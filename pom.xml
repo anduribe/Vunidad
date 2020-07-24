@@ -61,6 +61,15 @@
   <version>19.3.0.0</version>
 </dependency>
 
+<!--  Inicio Dependencias para generar registros (log) -->
+		<!-- https://mvnrepository.com/artifact/log4j/log4j -->
+		<dependency>
+		    <groupId>log4j</groupId>
+		    <artifactId>log4j</artifactId>
+		    <version>1.2.17</version>
+		</dependency>		
+		<!--  Fin Dependencias para generar registros (log) -->
+
 		</dependencies>
 
 	<build>

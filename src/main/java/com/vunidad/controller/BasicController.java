@@ -3,6 +3,7 @@ package com.vunidad.controller;
 import java.util.List;
 import java.util.Optional;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,14 +12,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.vunidad.VunidadApplication;
 import com.vunidad.modelo.Usuario;
 import com.vunidad.repo.UsuarioRepo;
+
+
 
 
 @Controller
 @RequestMapping
 public class BasicController 
 {
+	
+	private Logger registroLog = Logger.getLogger(VunidadApplication.class);
 	
 private final UsuarioRepo urepo;
 //creamos un costructor 
@@ -33,13 +39,22 @@ public ModelAndView login() {
 	return new ModelAndView("login");
 }
 
+@RequestMapping("/logs")
+public ModelAndView logs() {
+	return new ModelAndView("logs/elLogols");
+}
+
+
+
 @RequestMapping("/userDashboard")
 public ModelAndView userDashboard() {
+	registroLog.info(" se logeo el usuario");
 	return new ModelAndView("clientes/indexUser");
 }
 
 @RequestMapping("/adminDashboard")
 public ModelAndView adminDashboard() {
+	registroLog.info(" se logeo el administrador");
 	return new ModelAndView("indexAdmin");
 }
 	
@@ -47,6 +62,7 @@ public ModelAndView adminDashboard() {
 	@GetMapping("/insert")
 	public String view1(Usuario usuario)
 	{
+		registroLog.info(" se agrego un registro de accidente");
 		return "clientes/agregarAccidente";
 	}
 	
@@ -73,6 +89,7 @@ public ModelAndView adminDashboard() {
 	}
 	// ir a la pagina de actualizacion
 	@GetMapping("/edit/{id}")
+	
 	public String view4(@PathVariable("id") Optional<Long> id, Model m)
 	{
 		if(id.isPresent())
@@ -93,6 +110,7 @@ public ModelAndView adminDashboard() {
 		urepo.save(user);
 		m.addAttribute("data", urepo.findAll());
 		m.addAttribute("msg", " registro actualizado");
+		registroLog.info(" se actualizo un accidente");
 		return "clientes/displayPage";
 	}
 	
@@ -104,6 +122,7 @@ public ModelAndView adminDashboard() {
 		urepo.deleteById(id);
 		m.addAttribute("data", urepo.findAll());
 		m.addAttribute("msg", "Registro Borrado");
+		registroLog.info(" se elimino un registro de accidente");
 		return "clientes/displayPage";
 	}
 

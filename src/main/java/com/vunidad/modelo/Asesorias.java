@@ -21,7 +21,8 @@ public class Asesorias {
 		@Id
 
 		@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "author_generator")
-		@SequenceGenerator(name="author_generator", sequenceName = "ASESORIAS_SEQ")
+		@SequenceGenerator(name="author_generator",initialValue = 1, allocationSize = 1, sequenceName = "ASESORIAS_SEQ")
+
 		@Column(name = "id", updatable = false, nullable = false)
 		private long id;
 		@Column(name="Nombre", length = 300)
