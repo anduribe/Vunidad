@@ -69,6 +69,8 @@
 		    <version>1.2.17</version>
 		</dependency>		
 		<!--  Fin Dependencias para generar registros (log) -->
+		
+
 
 		</dependencies>
 

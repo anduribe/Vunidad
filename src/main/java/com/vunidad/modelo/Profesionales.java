@@ -39,6 +39,12 @@ public class Profesionales {
 	
 	@Column(name="Actividad", length = 200)
 	private String actividad;
+	
+	@Column(name="Presenta_Atraso", length = 200)
+	private String patraso;
+	
+	@Column(name="Detalle_Atraso", length = 200)
+	private String datraso;
 
 	public long getId() {
 		return id;
@@ -88,12 +94,29 @@ public class Profesionales {
 		this.actividad = actividad;
 	}
 
-	
+	public String getPatraso() {
+		return patraso;
+	}
+
+	public void setPatraso(String patraso) {
+		this.patraso = patraso;
+	}
+
+	public String getDatraso() {
+		return datraso;
+	}
+
+	public void setDatraso(String datraso) {
+		this.datraso = datraso;
+	}
+
 	@Override
 	public String toString() {
 		return "Profesionales [id=" + id + ", nombre=" + nombre + ", rut=" + rut + ", telefono=" + telefono + ", email="
-				+ email + ", actividad=" + actividad + "]";
+				+ email + ", actividad=" + actividad + ", patraso=" + patraso + ", datraso=" + datraso + "]";
 	}
+
+	
 
 	
 

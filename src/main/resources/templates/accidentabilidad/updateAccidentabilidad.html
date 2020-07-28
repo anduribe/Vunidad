@@ -4,12 +4,11 @@
     <meta charset="UTF-8">
 <head>
 <meta charset="ISO-8859-1">
-<title>UNIDAD 5 EQUIPO SSL - ACTUALIZAR INFORMACION DE CLIENTES</title>
+<title>UNIDAD 5 EQUIPO SSL - ACTUALIZAR DATOS DE ACCIDENTABILIDAD</title>
 
 <link th:href="@{/css/bootstrap.css}" rel="stylesheet"  href="../static/css/bootstrap.css"/> 
 <script th:src="@{/js/jquery.js}" src="../static/js/jquery.js"></script> 
 <script th:src="@{/js/bootstrap.js}" src="../static/js/bootstrap.js"></script> 
-<script th:src="@{/js/validarRUT.js}" src="../js/validarRUT.js"></script>
 </head>
 <body>
 
@@ -21,8 +20,8 @@
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
       <a class="nav-item nav-link" th:href="@{/adminDashboard}" href="#">Inicio <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link active" href="#" th:href="@{/insertpr}">Ingresar Informacion de Profesionales</a>
-      <a class="nav-item nav-link" href="#" th:href="@{/displayprofesionales}">Ver todos los registros</a>
+      <a class="nav-item nav-link active" href="#" th:href="@{/insertacci}">Ingresar Datos de Accidentes</a>
+      <a class="nav-item nav-link" href="#" th:href="@{/displayaccidentabilidad}">Ver todos los registros</a>
       <a class="nav-item nav-link" href="#" th:href="@{/logout}">Salir</a>
      
     </div>
@@ -35,50 +34,31 @@
 <div class="col-12">
 
 <div class="mx-auto" style="width: 800px;">
-<h1> ACTUALIZAR INFORMACION DE PROFESIONALES</h1> 
+<h1> MODIFICAR DATOS DE ACCIDENTABILIDAD</h1> 
 </div>
 
-<form action="#" th:action="@{/updatepr/{id} (id = ${edata.id})}" th:object="${edata}" method="POST">
+<form action="#" th:action="@{/updateacci/{id} (id = ${edata.id})}" th:object="${edata}" method="POST">
 <!-- <input type="hidden" th:field="*{id}"> -->
 
  <div class="form-group">
-    <label >INGRESAR NOMBRE:</label>
+    <label >INGRESAR NOMBRE EMPRESA:</label>
     <input type="text" th:field="*{nombre}" class="form-control" required>   
   </div>
   
   	<div class="form-group">
-    <label >INGRESAR RUT:</label>
-    <input type="text"   th:field="*{rut}" class="form-control" id="rut" oninput="checkRut(this)" name="identificador" maxlength="10" required> 
-  </div>
-    
-  	<div class="form-group">
-    <label >INGRESAR TELEFONO:</label>
-    <input type="text" th:field="*{telefono}" class="form-control" >   
+    <label >PROMEDIO DE TRABAJADORES EN EL PERIODO:</label>
+    <input type="number"  name="Price" id="Price" th:field="*{ntrabajadores}" class="form-control" min="1" required>   
   </div>
   
     	<div class="form-group">
-    <label >INGRESAR EMAIL:</label>
-    <input type="email" th:field="*{email}" class="form-control" >   
+    <label >CANTIDAD DE ACCIDENTES EN EL PERIODO:</label>
+    <input type="number"  name="Material" id="Material" onkeyup="cal()" th:field="*{taccidentes}" class="form-control" min="1" required>   
   </div>
-  
-      	<div class="form-group">
-    <label >INGRESAR ACTIVIDAD:</label>
-    <input type="text" th:field="*{actividad}" class="form-control" >   
-  </div>
-  
-      	<div class="form-group">
-    <label >PRESENTA ATRASOS:</label><br/>
-        <input type="radio" th:value="SI" th:text="SI" th:field="*{patraso}"> 
-		<input type="radio" th:value="NO" th:text="NO" th:field="*{patraso}"> 
+ 
+ <input type="hidden" value="" id="Resultado" name="Resultado" th:field="*{tasa}"/>
 
-  </div> 
-  
-      	<div class="form-group">
-    <label >DETALLE ATRASOS:</label>
-    <input type="text" th:field="*{datraso}" class="form-control" >   
-  </div> 
 	
-	<input class="btn btn-primary" type="submit" value="ACTUALIZAR">
+	<input class="btn btn-primary" type="submit" value="ACTUALIZAR" id="Agregar">
 	
 	</form>
 	<span th:text="${msg}"> EL REGISTRO FUE ACTUALIZADO</span>
@@ -86,7 +66,22 @@
 	</div>
 	</div>
 	
+	<script>
+	$(document).ready(function () {
+	    $("#Agregar").click(function (e) {
+	        var mat = $("#Material").val();
+	        var price = $("#Price").val();
+	        var resultado = parseFloat(mat) + parseFloat(price);
+	        
+	        var resultado2 = (mat * 100) / price;
+	        
+	        $("#Resultado").val(resultado2);
+	    });
+	});
+	</script>
 	
+	
+	</script>
 	
 	
 

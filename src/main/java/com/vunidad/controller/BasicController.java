@@ -3,6 +3,8 @@ package com.vunidad.controller;
 import java.util.List;
 import java.util.Optional;
 
+
+
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,6 +36,7 @@ public BasicController(UsuarioRepo urepo)
 	}
 
 
+
 @RequestMapping("/")
 public ModelAndView login() {
 	return new ModelAndView("login");
@@ -52,10 +55,22 @@ public ModelAndView userDashboard() {
 	return new ModelAndView("clientes/indexUser");
 }
 
+@RequestMapping("/displayusuario")
+public ModelAndView userAdmin() {
+	registroLog.info(" entro el admin");
+	return new ModelAndView("clientes/displayPage");
+}
+
 @RequestMapping("/adminDashboard")
 public ModelAndView adminDashboard() {
 	registroLog.info(" se logeo el administrador");
 	return new ModelAndView("indexAdmin");
+}
+
+@RequestMapping("/adminProfesional")
+public ModelAndView adminProfesional() {
+	registroLog.info(" se logeo el Profesional");
+	return new ModelAndView("adminProfesional");
 }
 	
 	

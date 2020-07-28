@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
     xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+    <meta charset="UTF-8">
 <head>
 <meta charset="ISO-8859-1">
 <title>UNIDAD 5 EQUIPO SSL - CLIENTE</title>
@@ -18,7 +19,7 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link active" th:href="@{/userDashboard}" href="#">Inicio <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link active" th:href="@{/display}" href="#">Inicio <span class="sr-only">(current)</span></a>
       <a class="nav-item nav-link" href="#" th:href="@{/insert}">Ingresar Accidente</a>
       <a class="nav-item nav-link" href="#" th:href="@{/display}">Ver todos los registros</a>
       <a class="nav-item nav-link" href="#" th:href="@{/logout}">Salir</a>

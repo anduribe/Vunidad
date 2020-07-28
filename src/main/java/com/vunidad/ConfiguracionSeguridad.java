@@ -34,7 +34,9 @@ public class ConfiguracionSeguridad extends WebSecurityConfigurerAdapter {
 		auth.inMemoryAuthentication()
 			.withUser("123").password("$2a$10$5.zbF9YwBjPb0zHJKe7m.e.ZrbgGAS7nCb0ENvDCWeSny21W8oT/.").roles("USER")
 			.and()
-			.withUser("1234").password("$2a$10$6GL9S7zSlvHKXEXpRw0rIe4Le9NIG5hZmuhL3zqp5nWGMtU5DkDea").roles("ADMIN");
+			.withUser("1234").password("$2a$10$6GL9S7zSlvHKXEXpRw0rIe4Le9NIG5hZmuhL3zqp5nWGMtU5DkDea").roles("ADMIN")
+			.and()
+			.withUser("12345").password("$2a$10$uEQKxVwPo5hQ2YWGsK7l/.58FfV9xzjS4Pg7RVvvRl/c7orW2B1yW").roles("PRO");
 	}
 
 	@Override
@@ -42,11 +44,14 @@ public class ConfiguracionSeguridad extends WebSecurityConfigurerAdapter {
 		http
 			.csrf().disable()
 			.authorizeRequests()
-			.antMatchers("/userDashboard").hasAnyRole("USER")
-			.antMatchers("/adminDashboard").hasAnyRole("ADMIN")
+			.antMatchers("/display").hasRole("USER")
+			.antMatchers("/adminDashboard","/logs","/displaymejoras","/displayasesorias","/displaychecklist","/displaypvisitas","/displayiclientes","/displayprofesionales","/displayaccidentabilidad").hasRole("ADMIN")
+			.antMatchers("/adminProfesional","/displaymejoras","/displayasesorias","/displaychecklist","/displaypvisitas").hasAnyRole("ADMIN","PRO")
 			.and().formLogin().loginPage("/login")
 				.successHandler(successHandler)
 			.permitAll()
+			.and()
+		     .exceptionHandling().accessDeniedPage("/error.html")
 			.and().logout();
 	}
 }	

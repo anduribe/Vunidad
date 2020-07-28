@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
     xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+    <meta charset="UTF-8">
 <head>
 <meta charset="ISO-8859-1">
 <title>UNIDAD 5 EQUIPO SSL - INFORMACION DE PROFESIONALES</title>
@@ -31,7 +32,7 @@
 <div class="raw">
 <div class="col-12">
 
-<div class="mx-auto" style="width: 500px;">
+<div class="mx-auto" style="width: 800px;">
 <br/>
 <h1>INFORMACION DE PROFESIONALES</h1>
 <br/>
@@ -45,6 +46,9 @@
       <th scope="col">TELEFONO</th>
       <th scope="col">EMAIL</th>
       <th scope="col">ACTIVIDAD</th>
+      <th scope="col">PRESENTA ATRASOS</th>
+      <th scope="col">DETALLE ATRASOS</th>
+      
       <th scope="col">ACTUALIZAR</th>
       <th scope="col">BORRAR</th>
     </tr>
@@ -56,6 +60,8 @@
 			<td th:utext="${tab.telefono}"> </td>
 			<td th:utext="${tab.email}"> </td>
 			<td th:utext="${tab.actividad}"> </td>
+			<td th:utext="${tab.patraso}"> </td>
+			<td th:utext="${tab.datraso}"> </td>
 			<td><a th:href="@{/editpr/{id} (id =${tab.id})}" class="btn btn-success" >Actualizar</a> </td>
 			<td><a th:href="@{/deletpr/{id} (id =${tab.id})}" class="btn btn-success" >Borrar</a> </td>	
 		
