@@ -1,9 +1,13 @@
 package com.vunidad.controller;
 
+import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
-
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -35,42 +39,65 @@ public BasicController(UsuarioRepo urepo)
 	this.urepo = urepo;
 	}
 
+/**
+ * INICIO CON JSP
+ * 
+ */
 
 
 @RequestMapping("/")
+public String welcome() {
+	return "login";
+}
+
+@RequestMapping("/api")
+public ModelAndView api() {
+	registroLog.info("ENTRO EN LA API EL IVITADO");
+	return new ModelAndView("thymeleaf/api");
+}
+
+
+@RequestMapping("/login")
 public ModelAndView login() {
 	return new ModelAndView("login");
 }
 
+@RequestMapping("/fuera")
+public ModelAndView fuera() {
+	registroLog.info("SE muestra pagina de error");
+	return new ModelAndView("thymeleaf/error");
+}
+
 @RequestMapping("/logs")
 public ModelAndView logs() {
-	return new ModelAndView("logs/elLogols");
+	registroLog.info("Administrador solicita fichero LOG");
+	return new ModelAndView("thymeleaf/logs/elLogols");
 }
 
 
 
-@RequestMapping("/userDashboard")
+@RequestMapping("/userdashboard")
 public ModelAndView userDashboard() {
 	registroLog.info(" se logeo el usuario");
-	return new ModelAndView("clientes/indexUser");
+	return new ModelAndView("thymeleaf/clientes/indexUser");
 }
 
 @RequestMapping("/displayusuario")
 public ModelAndView userAdmin() {
 	registroLog.info(" entro el admin");
-	return new ModelAndView("clientes/displayPage");
+	return new ModelAndView("thymeleaf/clientes/displayPage");
 }
 
-@RequestMapping("/adminDashboard")
+@RequestMapping("/admindashboard")
 public ModelAndView adminDashboard() {
 	registroLog.info(" se logeo el administrador");
-	return new ModelAndView("indexAdmin");
+	return new ModelAndView("thymeleaf/indexAdmin");
 }
 
-@RequestMapping("/adminProfesional")
+@RequestMapping("/adminprofesional")
 public ModelAndView adminProfesional() {
 	registroLog.info(" se logeo el Profesional");
-	return new ModelAndView("adminProfesional");
+	return new ModelAndView("thymeleaf/adminProfesional");
 }
 	
 	
@@ -78,7 +105,7 @@ public ModelAndView adminProfesional() {
 	public String view1(Usuario usuario)
 	{
 		registroLog.info(" se agrego un registro de accidente");
-		return "clientes/agregarAccidente";
+		return "thymeleaf/clientes/agregarAccidente";
 	}
 	
 	@PostMapping("/add")
@@ -86,7 +113,7 @@ public ModelAndView adminProfesional() {
 	{
 		urepo.save(user);
 		m.addAttribute("msg", "agregado nuevo accidente");
-		return "clientes/agregarAccidente";
+		return "thymeleaf/clientes/agregarAccidente";
 	}
 	
 	@GetMapping("/display")
@@ -100,7 +127,7 @@ public ModelAndView adminProfesional() {
 		else {
 			m.addAttribute("msg","no hay registros");
 		}
-		return "clientes/displayPage";
+		return "thymeleaf/clientes/displayPage";
 	}
 	// ir a la pagina de actualizacion
 	@GetMapping("/edit/{id}")
@@ -115,7 +142,7 @@ public ModelAndView adminProfesional() {
 		else {
 			m.addAttribute("edata", new Usuario());
 		}
-		return "clientes/updatePage";
+		return "thymeleaf/clientes/updatePage";
 	}
 	//Actualizar registro
 	
@@ -126,7 +153,7 @@ public ModelAndView adminProfesional() {
 		m.addAttribute("data", urepo.findAll());
 		m.addAttribute("msg", " registro actualizado");
 		registroLog.info(" se actualizo un accidente");
-		return "clientes/displayPage";
+		return "thymeleaf/clientes/displayPage";
 	}
 	
 	// borrar registro
@@ -138,7 +165,7 @@ public ModelAndView adminProfesional() {
 		m.addAttribute("data", urepo.findAll());
 		m.addAttribute("msg", "Registro Borrado");
 		registroLog.info(" se elimino un registro de accidente");
-		return "clientes/displayPage";
+		return "thymeleaf/clientes/displayPage";
 	}
 
 	

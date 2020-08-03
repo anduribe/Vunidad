@@ -32,7 +32,7 @@ public IclientesController(IclientesRepo icrepo)
 	@GetMapping("/insertic")
 	public String icliente1(Iclientes iclientes)
 	{
-		return "iclientes/agregarIclientes";
+		return "thymeleaf/iclientes/agregarIclientes";
 	}
 	
 	@PostMapping("/addic")
@@ -40,7 +40,7 @@ public IclientesController(IclientesRepo icrepo)
 	{
 		icrepo.save(iclient);
 		m.addAttribute("msg", "Cliente Agregado");
-		return "iclientes/agregarIclientes";
+		return "thymeleaf/iclientes/agregarIclientes";
 	}
 	
 	@GetMapping("/displayiclientes")
@@ -55,7 +55,7 @@ public IclientesController(IclientesRepo icrepo)
 			m.addAttribute("msg","no hay registros");
 		}
 		System.out.println("estoy en Info.clientes");
-		return "iclientes/displayIclientes";
+		return "thymeleaf/iclientes/displayIclientes";
 		
 	}
 	// ir a la pagina de actualizacion
@@ -70,7 +70,7 @@ public IclientesController(IclientesRepo icrepo)
 		else {
 			m.addAttribute("edata", new Iclientes());
 		}
-		return "iclientes/updateIclientes";
+		return "thymeleaf/iclientes/updateIclientes";
 	}
 	//Actualizar registro
 	
@@ -80,7 +80,7 @@ public IclientesController(IclientesRepo icrepo)
 		icrepo.save(iclient);
 		m.addAttribute("data", icrepo.findAll());
 		m.addAttribute("msg", " registro actualizado");
-		return "iclientes/displayIclientes";
+		return "thymeleaf/iclientes/displayIclientes";
 	}
 	
 	// borrar registro
@@ -91,7 +91,7 @@ public IclientesController(IclientesRepo icrepo)
 		icrepo.deleteById(id);
 		m.addAttribute("data", icrepo.findAll());
 		m.addAttribute("msg", "Registro Borrado");
-		return "iclientes/displayIclientes";
+		return "thymeleaf/iclientes/displayIclientes";
 	}
 
 	

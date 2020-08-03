@@ -35,7 +35,7 @@ public PvisitasController(PvisitasRepo pvrepo)
 	@GetMapping("/insertpv")
 	public String pvisitas1(Pvisitas pvisitas)
 	{
-		return "pvisitas/agregarPvisitas";
+		return "thymeleaf/pvisitas/agregarPvisitas";
 	}
 	
 	@PostMapping("/addpv")
@@ -43,7 +43,7 @@ public PvisitasController(PvisitasRepo pvrepo)
 	{
 		pvrepo.save(pvisit);
 		m.addAttribute("msg", "Agregada Visita");
-		return "pvisitas/agregarPvisitas";
+		return "thymeleaf/pvisitas/agregarPvisitas";
 	}
 	
 	@GetMapping("/displaypvisitas")
@@ -58,7 +58,7 @@ public PvisitasController(PvisitasRepo pvrepo)
 			m.addAttribute("msg","no hay registros");
 		}
 		System.out.println("estoy en Planificador de visitas");
-		return "pvisitas/displayPvisitas";
+		return "thymeleaf/pvisitas/displayPvisitas";
 		
 	}
 	// ir a la pagina de actualizacion
@@ -73,7 +73,7 @@ public PvisitasController(PvisitasRepo pvrepo)
 		else {
 			m.addAttribute("edata", new Pvisitas());
 		}
-		return "pvisitas/updatePvisitas";
+		return "thymeleaf/pvisitas/updatePvisitas";
 	}
 	//Actualizar registro
 	
@@ -83,7 +83,7 @@ public PvisitasController(PvisitasRepo pvrepo)
 		pvrepo.save(pvisit);
 		m.addAttribute("data", pvrepo.findAll());
 		m.addAttribute("msg", " registro actualizado");
-		return "pvisitas/displayPvisitas";
+		return "thymeleaf/pvisitas/displayPvisitas";
 	}
 	
 	// borrar registro
@@ -94,7 +94,7 @@ public PvisitasController(PvisitasRepo pvrepo)
 		pvrepo.deleteById(id);
 		m.addAttribute("data", pvrepo.findAll());
 		m.addAttribute("msg", "Registro Borrado");
-		return "pvisitas/displayPvisitas";
+		return "thymeleaf/pvisitas/displayPvisitas";
 	}
 
 	

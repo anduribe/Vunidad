@@ -35,7 +35,7 @@ public ChecklistController(ChecklistRepo chrepo)
 	@GetMapping("/insertch")
 	public String checklist1(Checklist checklist)
 	{
-		return "checklist/agregarChecklist";
+		return "thymeleaf/checklist/agregarChecklist";
 	}
 	
 	@PostMapping("/addch")
@@ -43,7 +43,7 @@ public ChecklistController(ChecklistRepo chrepo)
 	{
 		chrepo.save(check);
 		m.addAttribute("msg", "Agregada checklist");
-		return "Checklist/agregarChecklist";
+		return "thymeleaf/checklist/agregarChecklist";
 	}
 	
 	@GetMapping("/displaychecklist")
@@ -58,7 +58,7 @@ public ChecklistController(ChecklistRepo chrepo)
 			m.addAttribute("msg","no hay registros");
 		}
 		System.out.println("estoy en Checklist");
-		return "checklist/displayChecklist";
+		return "thymeleaf/checklist/displayChecklist";
 		
 	}
 	// ir a la pagina de actualizacion
@@ -73,7 +73,7 @@ public ChecklistController(ChecklistRepo chrepo)
 		else {
 			m.addAttribute("edata", new Checklist());
 		}
-		return "checklist/updateChecklist";
+		return "thymeleaf/checklist/updateChecklist";
 	}
 	//Actualizar registro
 	
@@ -83,7 +83,7 @@ public ChecklistController(ChecklistRepo chrepo)
 		chrepo.save(check);
 		m.addAttribute("data", chrepo.findAll());
 		m.addAttribute("msg", " Checklist actualizado");
-		return "checklist/displayChecklist";
+		return "thymeleaf/checklist/displayChecklist";
 	}
 	
 	// borrar registro
@@ -94,7 +94,7 @@ public ChecklistController(ChecklistRepo chrepo)
 		chrepo.deleteById(id);
 		m.addAttribute("data", chrepo.findAll());
 		m.addAttribute("msg", "Registro Borrado");
-		return "checklist/displayChecklist";
+		return "thymeleaf/checklist/displayChecklist";
 	}
 
 	

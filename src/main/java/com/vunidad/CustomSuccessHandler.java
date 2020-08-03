@@ -29,11 +29,14 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
 				redirectUrl = "/display";
 				break;
 			} else if (grantedAuthority.getAuthority().equals("ROLE_ADMIN")) {
-				redirectUrl = "/adminDashboard";
+				redirectUrl = "/admindashboard";
 				break;
 			}
 			 else if (grantedAuthority.getAuthority().equals("ROLE_PRO")) {
-					redirectUrl = "/adminProfesional";
+					redirectUrl = "/adminprofesional";
+					break;
+				}else if (grantedAuthority.getAuthority().equals("ROLE_INVI")) {
+					redirectUrl = "/displayaccidentabilidad";
 					break;
 				}
 		}

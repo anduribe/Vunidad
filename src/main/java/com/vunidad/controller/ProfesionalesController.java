@@ -32,7 +32,7 @@ public ProfesionalesController(ProfesionalesRepo prorepo)
 	@GetMapping("/insertpr")
 	public String profesional1(Profesionales profesionales)
 	{
-		return "profesionales/agregarProfesionales";
+		return "thymeleaf/profesionales/agregarProfesionales";
 	}
 	
 	@PostMapping("/addpr")
@@ -40,7 +40,7 @@ public ProfesionalesController(ProfesionalesRepo prorepo)
 	{
 		prorepo.save(profe);
 		m.addAttribute("msg", "Profesional Agregado");
-		return "profesionales/agregarProfesionales";
+		return "thymeleaf/profesionales/agregarProfesionales";
 	}
 	
 	@GetMapping("/displayprofesionales")
@@ -55,7 +55,7 @@ public ProfesionalesController(ProfesionalesRepo prorepo)
 			m.addAttribute("msg","no hay registros");
 		}
 		System.out.println("estoy en Info.Profesionales");
-		return "profesionales/displayProfesionales";
+		return "thymeleaf/profesionales/displayProfesionales";
 		
 	}
 	// ir a la pagina de actualizacion
@@ -70,7 +70,7 @@ public ProfesionalesController(ProfesionalesRepo prorepo)
 		else {
 			m.addAttribute("edata", new Profesionales());
 		}
-		return "profesionales/updateProfesionales";
+		return "thymeleaf/profesionales/updateProfesionales";
 	}
 	//Actualizar registro
 	
@@ -80,7 +80,7 @@ public ProfesionalesController(ProfesionalesRepo prorepo)
 		prorepo.save(profe);
 		m.addAttribute("data", prorepo.findAll());
 		m.addAttribute("msg", " registro actualizado");
-		return "profesionales/displayProfesionales";
+		return "thymeleaf/profesionales/displayProfesionales";
 	}
 	
 	// borrar registro
@@ -91,7 +91,7 @@ public ProfesionalesController(ProfesionalesRepo prorepo)
 		prorepo.deleteById(id);
 		m.addAttribute("data", prorepo.findAll());
 		m.addAttribute("msg", "Registro Borrado");
-		return "profesionales/displayProfesionales";
+		return "thymeleaf/profesionales/displayProfesionales";
 	}
 
 	

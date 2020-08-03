@@ -33,7 +33,7 @@ public MejorasController(MejorasRepo mrepo)
 //
 @RequestMapping("/mejoral")
 public ModelAndView mejorDashboard() {
-return new ModelAndView("mejoras/indexmejor");
+return new ModelAndView("thymeleaf/mejoras/indexmejor");
 }
 //
 
@@ -42,7 +42,7 @@ return new ModelAndView("mejoras/indexmejor");
 	@GetMapping("/insertm")
 	public String mejora1(Mejoras mejoras)
 	{
-		return "mejoras/agregarMejoras";
+		return "thymeleaf/mejoras/agregarMejoras";
 	}
 	
 	@PostMapping("/addm")
@@ -50,7 +50,7 @@ return new ModelAndView("mejoras/indexmejor");
 	{
 		mrepo.save(mejor);
 		m.addAttribute("msg", "Agregada Mejora");
-		return "mejoras/agregarMejoras";
+		return "thymeleaf/mejoras/agregarMejoras";
 	}
 	
 	@GetMapping("/displaymejoras")
@@ -65,7 +65,7 @@ return new ModelAndView("mejoras/indexmejor");
 			m.addAttribute("msg","no hay registros");
 		}
 		System.out.println("estoy en mejoras");
-		return "mejoras/displayMejoras";
+		return "thymeleaf/mejoras/displayMejoras";
 		
 	}
 	// ir a la pagina de actualizacion
@@ -80,7 +80,7 @@ return new ModelAndView("mejoras/indexmejor");
 		else {
 			m.addAttribute("edata", new Mejoras());
 		}
-		return "mejoras/updateMejoras";
+		return "thymeleaf/mejoras/updateMejoras";
 	}
 	//Actualizar registro
 	
@@ -90,7 +90,7 @@ return new ModelAndView("mejoras/indexmejor");
 		mrepo.save(mejor);
 		m.addAttribute("data", mrepo.findAll());
 		m.addAttribute("msg", " registro actualizado");
-		return "mejoras/displayMejoras";
+		return "thymeleaf/mejoras/displayMejoras";
 	}
 	
 	// borrar registro
@@ -101,7 +101,7 @@ return new ModelAndView("mejoras/indexmejor");
 		mrepo.deleteById(id);
 		m.addAttribute("data", mrepo.findAll());
 		m.addAttribute("msg", "Registro Borrado");
-		return "mejoras/displayMejoras";
+		return "thymeleaf/mejoras/displayMejoras";
 	}
 
 	

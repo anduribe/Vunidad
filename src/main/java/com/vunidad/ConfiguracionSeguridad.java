@@ -1,13 +1,19 @@
 package com.vunidad;
 
-import org.aspectj.weaver.ast.And;
+
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
+import org.springframework.http.HttpMethod;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -15,6 +21,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
 
 @Configuration
 @EnableWebSecurity
@@ -45,13 +53,13 @@ public class ConfiguracionSeguridad extends WebSecurityConfigurerAdapter {
 			.csrf().disable()
 			.authorizeRequests()
 			.antMatchers("/display").hasRole("USER")
-			.antMatchers("/adminDashboard","/logs","/displaymejoras","/displayasesorias","/displaychecklist","/displaypvisitas","/displayiclientes","/displayprofesionales","/displayaccidentabilidad").hasRole("ADMIN")
-			.antMatchers("/adminProfesional","/displaymejoras","/displayasesorias","/displaychecklist","/displaypvisitas").hasAnyRole("ADMIN","PRO")
+			.antMatchers("/admindashboard","/logs","/displaymejoras","/displayasesorias","/displaychecklist","/displaypvisitas","/displayiclientes","/displayprofesionales","/displayaccidentabilidad").hasRole("ADMIN")
+			.antMatchers("/adminprofesional","/displaymejoras","/displayasesorias","/displaychecklist","/displaypvisitas","/displayiclientes").hasAnyRole("ADMIN","PRO")
 			.and().formLogin().loginPage("/login")
 				.successHandler(successHandler)
 			.permitAll()
 			.and()
-		     .exceptionHandling().accessDeniedPage("/error.html")
+		     .exceptionHandling().accessDeniedPage("/fuera")
 			.and().logout();
 	}
-}	
+}

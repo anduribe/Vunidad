@@ -35,7 +35,7 @@ public AsesoriasController(AsesoriasRepo asrepo)
 	@GetMapping("/insertas")
 	public String asesoria1(Asesorias asesorias)
 	{
-		return "asesorias/agregarAsesorias";
+		return "thymeleaf/asesorias/agregarAsesorias";
 	}
 	
 	@PostMapping("/addas")
@@ -43,7 +43,7 @@ public AsesoriasController(AsesoriasRepo asrepo)
 	{
 		asrepo.save(asesor);
 		m.addAttribute("msg", "Agregada Asesoria");
-		return "asesorias/agregarAsesorias";
+		return "thymeleaf/asesorias/agregarAsesorias";
 	}
 	
 	@GetMapping("/displayasesorias")
@@ -58,7 +58,7 @@ public AsesoriasController(AsesoriasRepo asrepo)
 			m.addAttribute("msg","no hay registros");
 		}
 		System.out.println("estoy en Asesorias");
-		return "asesorias/displayAsesorias";
+		return "thymeleaf/asesorias/displayAsesorias";
 		
 	}
 	// ir a la pagina de actualizacion
@@ -73,7 +73,7 @@ public AsesoriasController(AsesoriasRepo asrepo)
 		else {
 			m.addAttribute("edata", new Asesorias());
 		}
-		return "asesorias/updateAsesorias";
+		return "thymeleaf/asesorias/updateAsesorias";
 	}
 	//Actualizar registro
 	
@@ -83,7 +83,7 @@ public AsesoriasController(AsesoriasRepo asrepo)
 		asrepo.save(asesor);
 		m.addAttribute("data", asrepo.findAll());
 		m.addAttribute("msg", " registro actualizado");
-		return "asesorias/displayAsesorias";
+		return "thymeleaf/asesorias/displayAsesorias";
 	}
 	
 	// borrar registro
@@ -94,7 +94,7 @@ public AsesoriasController(AsesoriasRepo asrepo)
 		asrepo.deleteById(id);
 		m.addAttribute("data", asrepo.findAll());
 		m.addAttribute("msg", "Registro Borrado");
-		return "asesorias/displayAsesorias";
+		return "thymeleaf/asesorias/displayAsesorias";
 	}
 
 	

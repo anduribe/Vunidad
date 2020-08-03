@@ -35,7 +35,7 @@ public AccidentabilidadController(AccidentabilidadRepo accirepo)
 	@GetMapping("/insertacci")
 	public String accidentabilidad1(Accidentabilidad accidentabilidad)
 	{
-		return "accidentabilidad/agregarAccidentabilidad";
+		return "thymeleaf/accidentabilidad/agregarAccidentabilidad";
 	}
 	
 	@PostMapping("/addacci")
@@ -43,7 +43,7 @@ public AccidentabilidadController(AccidentabilidadRepo accirepo)
 	{
 		accirepo.save(tacci);
 		m.addAttribute("msg", "Agregados Datos de accidentes");
-		return "accidentabilidad/agregarAccidentabilidad";
+		return "thymeleaf/accidentabilidad/agregarAccidentabilidad";
 	}
 	
 	@GetMapping("/displayaccidentabilidad")
@@ -58,7 +58,7 @@ public AccidentabilidadController(AccidentabilidadRepo accirepo)
 			m.addAttribute("msg","no hay registros");
 		}
 		System.out.println("estoy en Accidentabilidad");
-		return "accidentabilidad/displayAccidentabilidad";
+		return "thymeleaf/accidentabilidad/displayAccidentabilidad";
 		
 	}
 	// ir a la pagina de actualizacion
@@ -73,7 +73,7 @@ public AccidentabilidadController(AccidentabilidadRepo accirepo)
 		else {
 			m.addAttribute("edata", new Accidentabilidad());
 		}
-		return "accidentabilidad/updateAccidentabilidad";
+		return "thymeleaf/accidentabilidad/updateAccidentabilidad";
 	}
 	//Actualizar registro
 	
@@ -83,7 +83,7 @@ public AccidentabilidadController(AccidentabilidadRepo accirepo)
 		accirepo.save(tacci);
 		m.addAttribute("data", accirepo.findAll());
 		m.addAttribute("msg", " registro actualizado");
-		return "accidentabilidad/displayAccidentabilidad";
+		return "thymeleaf/accidentabilidad/displayAccidentabilidad";
 	}
 	
 	// borrar registro
@@ -94,7 +94,7 @@ public AccidentabilidadController(AccidentabilidadRepo accirepo)
 		accirepo.deleteById(id);
 		m.addAttribute("data", accirepo.findAll());
 		m.addAttribute("msg", "Registro Borrado");
-		return "accidentabilidad/displayAccidentabilidad";
+		return "thymeleaf/accidentabilidad/displayAccidentabilidad";
 	}
 
 	

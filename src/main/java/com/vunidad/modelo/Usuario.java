@@ -32,8 +32,8 @@ public class Usuario {
 	private String rut;
 	@Column(name="Accidente", length = 200)
 	private String accidente;
-	
-	
+	@Column(name="Asesoria_Especial", length = 200)
+	private String aespecial;
 	public long getId() {
 		return id;
 	}
@@ -64,12 +64,19 @@ public class Usuario {
 	public void setAccidente(String accidente) {
 		this.accidente = accidente;
 	}
-	
+	public String getAespecial() {
+		return aespecial;
+	}
+	public void setAespecial(String aespecial) {
+		this.aespecial = aespecial;
+	}
 	@Override
 	public String toString() {
 		return "Usuario [id=" + id + ", nombre=" + nombre + ", fecha=" + fecha + ", rut=" + rut + ", accidente="
-				+ accidente + "]";
+				+ accidente + ", aespecial=" + aespecial + "]";
 	}
+	
+	
 	
 	
 	

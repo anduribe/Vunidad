@@ -32,7 +32,7 @@ public CPclientesController(CPclientesRepo cpcrepo)
 	@GetMapping("/insertcp")
 	public String cpcliente1(CPclientes cpclientes)
 	{
-		return "cpclientes/agregarCPclientes";
+		return "thymeleaf/cpclientes/agregarCPclientes";
 	}
 	
 	@PostMapping("/addcp")
@@ -40,7 +40,7 @@ public CPclientesController(CPclientesRepo cpcrepo)
 	{
 		cpcrepo.save(cpclient);
 		m.addAttribute("msg", "Control Agregado");
-		return "cpclientes/agregarCPclientes";
+		return "thymeleaf/cpclientes/agregarCPclientes";
 	}
 	
 	@GetMapping("/displaycpclientes")
@@ -55,7 +55,7 @@ public CPclientesController(CPclientesRepo cpcrepo)
 			m.addAttribute("msg","no hay registros");
 		}
 		System.out.println("estoy en Control pago Clientes");
-		return "cpclientes/displayCPclientes";
+		return "thymeleaf/cpclientes/displayCPclientes";
 		
 	}
 	// ir a la pagina de actualizacion
@@ -70,7 +70,7 @@ public CPclientesController(CPclientesRepo cpcrepo)
 		else {
 			m.addAttribute("edata", new CPclientes());
 		}
-		return "cpclientes/updateCPclientes";
+		return "thymeleaf/cpclientes/updateCPclientes";
 	}
 	//Actualizar registro
 	
@@ -80,7 +80,7 @@ public CPclientesController(CPclientesRepo cpcrepo)
 		cpcrepo.save(cpclient);
 		m.addAttribute("data", cpcrepo.findAll());
 		m.addAttribute("msg", " registro pago clientes actualizado");
-		return "cpclientes/displayCPclientes";
+		return "thymeleaf/cpclientes/displayCPclientes";
 	}
 	
 	// borrar registro
@@ -91,7 +91,7 @@ public CPclientesController(CPclientesRepo cpcrepo)
 		cpcrepo.deleteById(id);
 		m.addAttribute("data", cpcrepo.findAll());
 		m.addAttribute("msg", "Registro Borrado");
-		return "cpclientes/displayCPclientes";
+		return "thymeleaf/cpclientes/displayCPclientes";
 	}
 
 	
